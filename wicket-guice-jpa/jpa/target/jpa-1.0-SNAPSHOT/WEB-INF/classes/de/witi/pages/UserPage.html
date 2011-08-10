@@ -1,0 +1,21 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+    <head>
+        <title>50226.de - Wicket Guice JPA 2.0</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p><strong><a href="http://50226.de/">50226.de - Witi's Blog</a>: <a href="http://wicket.apache.org/">Wicket</a> <a href="http://code.google.com/p/google-guice/">Guice</a> <a href="http://de.wikipedia.org/wiki/Java_Persistence_API">JPA 2.0</a></strong></p>
+        <h1>User Page</h1>
+        <form wicket:id="form">
+            <fieldset>
+                <label>Name</label><input wicket:id="name" /><br>
+                <label>Nachname</label><input wicket:id="surname" /><br>
+                <a wicket:id="submit">Speichern</a>
+            </fieldset>
+        </form>
+        <ul wicket:id="list">
+            <li wicket:id="list"><span wicket:id="name"></span> - <span wicket:id="surname"></span></li>
+        </ul>
+    </body>
+</html>
