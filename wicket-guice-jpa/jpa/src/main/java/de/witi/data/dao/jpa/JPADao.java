@@ -37,7 +37,19 @@ public class JPADao implements Dao {
     public <E extends Serializable> void save(final E o) {
         em.persist(o);
     }
-
+    
+    @Override
+    @Transactional
+    public <E extends Serializable> E find(final Class<E> clazz, final E o) {
+        return em.find(clazz, o);
+    }
+    
+    @Override
+    @Transactional
+    public <E extends Serializable> boolean exists(final Class<E> clazz, final E o) {
+        return em.find(clazz, o) != null;
+    }
+    
     @Override
     @Transactional
     public <E extends Serializable> void update(final E o) {

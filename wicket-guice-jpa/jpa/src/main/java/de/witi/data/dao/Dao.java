@@ -21,4 +21,8 @@ public interface Dao {
     public <E extends Serializable> List<E> findAll(final Class<E> clazz);
 
     public <E extends Serializable> int countAll(final Class<E> clazz);
+    
+    public <E extends Serializable> E find(final Class<E> clazz, final E o);
+    
+    public <E extends Serializable> boolean exists(final Class<E> clazz, final E o);
 }

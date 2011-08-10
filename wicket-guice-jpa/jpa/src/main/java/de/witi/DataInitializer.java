@@ -14,14 +14,14 @@ import de.witi.entity.User;
 public class DataInitializer {
 
     private static final String[] NAMES = {"Hans", "Willy", "Manfred", "Peter"};
-    private static final String[] SURNAMES = {"Schuhmacher", "Müller", "Schneider", "Zimmer"};
+    private static final String[] PASSWORDS = {"Schuhmacher", "Müller", "Schneider", "Zimmer"};
 
     @Inject
     public DataInitializer(final Dao dao) {
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 3; ++i) {
             final User user = new User();
-            user.setName(NAMES[(int) (Math.random() * NAMES.length)]);
-            user.setPassword(SURNAMES[(int) (Math.random() * SURNAMES.length)]);
+            user.setName(NAMES[i]);
+            user.setPassword(PASSWORDS[i]);
             dao.save(user);
         }
     }

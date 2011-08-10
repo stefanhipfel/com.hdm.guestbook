@@ -2,7 +2,6 @@ package de.witi.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -15,18 +14,8 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 2959377496669050427L;
     @Id
-    @GeneratedValue
-    private Short id;
     private String name;
     private String password;
-
-    public Short getId() {
-        return id;
-    }
-
-    public void setId(Short id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -56,11 +45,6 @@ public class User implements Serializable {
 
         final User other = (User) obj;
 
-        if (this.getId() != other.getId() && (this.getId() == null
-                || !this.getId().equals(other.getId()))) {
-            return false;
-        }
-
         if ((this.getName() == null) ? (other.getName() != null) : !this.getName().equals(other.getName())) {
             return false;
         }
@@ -76,7 +60,6 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 11 * hash + (this.getId() != null ? this.getId().hashCode() : 0);
         hash = 11 * hash + (this.getName() != null ? this.getName().hashCode() : 0);
         hash = 11 * hash + (this.getPassword() != null ? this.getPassword().hashCode() : 0);
         return hash;

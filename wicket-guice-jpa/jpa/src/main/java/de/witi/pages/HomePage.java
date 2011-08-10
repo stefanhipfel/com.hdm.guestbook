@@ -17,6 +17,6 @@ public class HomePage extends WebPage {
      */
     public HomePage() {
         // Add link
-        add(new BookmarkablePageLink<Void>("register", Register.class));
+        add(new BookmarkablePageLink<Void>("login", LoginPage.class));
     }
 }
