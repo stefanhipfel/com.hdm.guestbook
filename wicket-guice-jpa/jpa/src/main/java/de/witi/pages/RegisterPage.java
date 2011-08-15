@@ -10,6 +10,7 @@ import de.witi.data.dao.Dao;
 import de.witi.entity.User;
 import java.sql.BatchUpdateException;
 import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.PasswordTextField;
 
 /**
  * User page.
@@ -24,8 +25,8 @@ public class RegisterPage extends WebPage {
 
     public RegisterPage() {
         final Form<User> loginForm = new Form<User>("login", new CompoundPropertyModel<User>(new User()));        
-        loginForm.add(new TextField<String>("name").setRequired(true));
-        loginForm.add(new TextField<String>("password").setRequired(true));
+        loginForm.add(new TextField<String>("name").setRequired(true));        
+        loginForm.add(new PasswordTextField("password").setRequired(true));
         loginForm.add(new Button("register") {
             private static final long serialVersionUID = 1L;
             @Override

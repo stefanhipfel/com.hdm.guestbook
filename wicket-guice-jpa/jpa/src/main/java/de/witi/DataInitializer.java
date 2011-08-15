@@ -3,7 +3,9 @@ package de.witi;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import de.witi.data.dao.Dao;
+import de.witi.entity.Entry;
 import de.witi.entity.User;
+import java.sql.Date;
 
 /**
  * Initializer for some sample data.
@@ -14,7 +16,7 @@ import de.witi.entity.User;
 public class DataInitializer {
 
     private static final String[] NAMES = {"Hans", "Willy", "Manfred", "Peter"};
-    private static final String[] PASSWORDS = {"Schuhmacher", "MÃ¼ller", "Schneider", "Zimmer"};
+    private static final String[] PASSWORDS = {"Schuhmacher", "Müller", "Schneider", "Zimmer"};
 
     @Inject
     public DataInitializer(final Dao dao) {
@@ -24,5 +26,13 @@ public class DataInitializer {
             user.setPassword(PASSWORDS[i]);
             dao.save(user);
         }
+        for (int i = 0; i < 3; ++i) {
+            Entry entry = new Entry();
+            entry.setUser(NAMES[i]);
+            entry.setTimetamp(new Date(System.currentTimeMillis()));
+            entry.setText(PASSWORDS[i]);
+            dao.save(entry);
+        }
+        
     }
 }

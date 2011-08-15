@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    </head>
+    <body>
+        <h1 align="center">Guestbook - Overview</h1>
+        <div align="center">
+            <form wicket:id="overviewForm">
+                <button wicket:id="newEntry">New Entry</button>
+            </form>
+            <table width="50%" border="1" bordercolor="WHITE" wicket:id="list">
+                <div wicket:id="list">
+                    <tr bordercolor="BLACK">
+                        <td><label wicket:id="id" /></td>
+                        <td><label wicket:id="user" /></td>
+                        <td><label wicket:id="timestamp" /></td>
+                    </tr>
+                    <tr bordercolor="BLACK">
+                        <td colspan="3"><label wicket:id="text" /></td>
+                    </tr>
+                    <tr height="20"/>
+                </div>	
+            </table>
+        </div>
+    </body>
+</html> 

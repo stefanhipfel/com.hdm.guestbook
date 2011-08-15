@@ -24,19 +24,18 @@ public class MockDAOModule extends AbstractModule {
     @Override
     protected void configure() {
 
-        final User user = new User();
-        user.setName("name");
-        user.setSurname("surname");
-        user.setId((short) 1);
-
-        final List<User> users = new ArrayList<User>();
-        users.add(user);
-
-        Dao mockDAO = mock(Dao.class);
-        when(mockDAO.countAll(User.class)).thenReturn(1);
-        when(mockDAO.findAll(User.class)).thenReturn(users);
-        when(mockDAO.load(User.class, anyInt())).thenReturn(user);
-
-        bind(Dao.class).toInstance(mockDAO);
+//        final User user = new User();
+//        user.setName("name");
+//        user.setPassword("password");
+//
+//        final List<User> users = new ArrayList<User>();
+//        users.add(user);
+//
+//        Dao mockDAO = mock(Dao.class);
+//        when(mockDAO.countAll(User.class)).thenReturn(1);
+//        when(mockDAO.findAll(User.class)).thenReturn(users);
+//        when(mockDAO.load(User.class, anyInt())).thenReturn(user);
+//
+//        bind(Dao.class).toInstance(mockDAO);
     }
 }

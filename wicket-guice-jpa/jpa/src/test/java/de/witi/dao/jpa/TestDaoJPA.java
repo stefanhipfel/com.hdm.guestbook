@@ -45,9 +45,8 @@ public class TestDaoJPA {
 
         user = new User();
         user.setName("name");
-        user.setSurname("surname");
+        user.setPassword("password");
         dao.save(user);
-        user.setId((short) 1);
     }
 
     @After
@@ -78,7 +77,7 @@ public class TestDaoJPA {
      */
     @Test
     public void testDelete() {
-        dao.delete(dao.load(User.class, user.getId()));
+        dao.delete(dao.load(User.class, user.getName()));
         Assert.assertEquals(0, dao.countAll(User.class));
     }
 
@@ -87,7 +86,7 @@ public class TestDaoJPA {
      */
     @Test
     public void testLoad() {
-        User user2 = dao.load(User.class, user.getId());
+        User user2 = dao.load(User.class, user.getName());
         Assert.assertEquals(user, user2);
     }
 
