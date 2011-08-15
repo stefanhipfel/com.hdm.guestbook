@@ -7,7 +7,13 @@ import com.google.inject.Guice;
 import de.witi.pages.HomePage;
 import de.witi.config.modules.DataModule;
 import de.witi.config.modules.JPAModule;
+import de.witi.pages.LoginPage;
+import de.witi.pages.UserLoginPageAuthStrategy;
 import de.witi.pages.UserPage;
+import de.witi.session.GuestbookSession;
+import org.apache.wicket.Request;
+import org.apache.wicket.Response;
+import org.apache.wicket.Session;
 
 /**
  * Application class.
@@ -33,6 +39,8 @@ public class WicketApplication extends WebApplication {
         mountBookmarkablePage("user", UserPage.class);
 
         addComponentInstantiationListener(getGuiceInjector());
+        
+        getSecuritySettings().setAuthorizationStrategy(new UserLoginPageAuthStrategy(LoginPage.class));
     }
 
     /* (non-Javadoc)
@@ -41,5 +49,9 @@ public class WicketApplication extends WebApplication {
     @Override
     public Class<HomePage> getHomePage() {
         return HomePage.class;
+    }
+    @Override
+    public Session newSession(Request request, Response response){
+        return new GuestbookSession(request);
     }
 }

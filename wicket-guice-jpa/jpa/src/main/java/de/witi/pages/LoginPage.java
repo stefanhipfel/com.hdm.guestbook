@@ -6,8 +6,10 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 
 import com.google.inject.Inject;
+import de.witi.WicketApplication;
 import de.witi.data.dao.Dao;
 import de.witi.entity.User;
+import de.witi.session.GuestbookSession;
 import java.util.List;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -44,17 +46,25 @@ public class LoginPage extends WebPage {
                 user.setPassword(u.getPassword());
                 System.out.println("Name: "+u.getName());
                 System.out.println("Password: "+u.getPassword());     
-                List<User> users = dao.findAll(User.class);
+                List<User> users = dao.findUsers(u.getName(), u.getPassword());
                 int i =0;
                 boolean found = false;
-                while(i < users.size() && !found) {
+                if(users.size() > 0)
+                    GuestbookSession.get().setUser(user);
+                
+                if (!continueToOriginalDestination()){
+                     //setResponsePage(WicketApplication.get().getHomePage());
+                    setResponsePage(WicketApplication.get().getHomePage());
+                }
+                /*while(i < users.size() && !found) {
                     if(users.get(i).equals(user))
                         found = true;
                     i++;
                 }
                 if(found) {
                     setResponsePage(OverviewPage.class);
-                }
+                }*/
+                
             }
         });
         add(loginForm);

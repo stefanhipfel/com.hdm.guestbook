@@ -19,7 +19,7 @@ import org.apache.wicket.model.LoadableDetachableModel;
  *
  * @author Witold Czaplewski - http://50226.de
  */
-public class OverviewPage extends WebPage {
+public class OverviewPage extends WebPage implements SecurePageInterface {
 
     private static final long serialVersionUID = 1L;
     @Inject

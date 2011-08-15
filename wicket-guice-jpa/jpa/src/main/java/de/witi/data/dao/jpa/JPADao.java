@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 
 
 import de.witi.data.dao.Dao;
+import de.witi.entity.User;
 
 /**
  * JPA DAO.
@@ -62,6 +63,18 @@ public class JPADao implements Dao {
         return em.createQuery("from " + clazz.getAnnotation(Entity.class).name(), clazz).getResultList();
     }
 
+    @Override
+    @Transactional
+    public <E extends Serializable> List<User> findUsers(String name, String password) {
+        return em.createQuery("from users where name = '" + name + "' and password = '" + password + "'", User.class).getResultList();
+    }
+    
+    @Override
+    @Transactional
+    public <E extends Serializable> List<User> getSingleUser(String name) {
+        return em.createQuery("from users where name = '" + name + "'", User.class).getResultList();
+    }
+    
     @Override
     @Transactional
     public <E extends Serializable> int countAll(final Class<E> clazz) {

@@ -1,5 +1,6 @@
 package de.witi.data.dao;
 
+import de.witi.entity.User;
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,4 +26,8 @@ public interface Dao {
     public <E extends Serializable> E find(final Class<E> clazz, final E o);
     
     public <E extends Serializable> boolean exists(final Class<E> clazz, final E o);
+    
+    public <E extends Serializable> List<User> findUsers(String name, String password); 
+    
+    public <E extends Serializable> List<User> getSingleUser(String name); 
 }
